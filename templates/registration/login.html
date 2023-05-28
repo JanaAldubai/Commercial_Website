@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html lang="en">
+  <head>
+    <style>
+      body{
+      margin-top: 100px;
+      }
+    </style>
+</head>
+<body>
+{% for message in messages %}
+<div style="background-color:#7ac568ab" class="message {{ message.tags }}">
+  {{ message }}
+</div>
+{% endfor %}
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button style="background-color: rgb(5, 73, 50);" type="submit" class="btn btn-success">Log In</button>
+</form>
+<br>
+<div>
+  <h4>You don't have an account? <a href="{% url 'signup' %}">register here</a></h4>
+</div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body{
+      background-image: url("{% static 'page/image/back1.jpeg'%}");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .section{
+      background-color: rgb(233, 245, 233);
+    }
+    h6{
+      color: rgb(113, 181, 113);
+      text-align: center;
+    }
+
+    h4{
+      color: rgb(1, 48, 1);
+      text-align: center;
+    }
+    h1{
+      color: rgb(227, 233, 227);
+      text-align: center;
+    }
+
+    .p{
+      color: rgb(9, 9, 9);
+      text-align: center;
+      padding: 40px;
+      
+    }
+  </style>
+    <meta charset="UTF-8">
+        <title>BLOG</title>
+        <script src="{% static 'page/js/script.js'%}" type="text/JavaScript"></script>
+        
+                <!--=============== CSS ===============-->
+                <link rel="stylesheet" href="{% static 'page/css/style.css'%}">
+
+                  <!--=============== REMIX ICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+</head>
+<body>
+<!--==================== HOME ====================-->
+
+
+{%for x in post.all %}
+
+<section class="home" id="home">
+      <div class="section">
+          <h4 >
+            {{x.title}}
+          </h4>
+
+          <p class="p">
+            {{x.text}}
+          </p>
+          
+          <h6>{{x.date}}</h6>
+
+        <h6>{{x.time}}</h6>
+
+        <h4>🌱</h4>
+
+      </div>
+</section>
+      {% endfor %}
+
+
+     <!--=============== MAIN JS ===============-->
+     <script src="{% static 'page/js/main.js'%}"></script>
+</body>
+</html>
+
+{% endblock %}

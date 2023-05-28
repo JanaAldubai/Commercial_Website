@@ -1,0 +1,101 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+
+<style>
+    section{
+       
+      background-image: url("{% static 'page/image/back1.jpeg'%}");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    
+    }
+</style>
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="{% static 'page/css/style.css'%}">
+
+  <!--=============== REMIX ICONS ===============-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<section style="background-color: rgb(5, 73, 50)">
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="card text-dark">
+          <div class="card-body p-4">
+            <h4 class="mb-0">Recent comments</h4>
+            <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+            {% for comment in comment.all %}
+            <div class="d-flex flex-start">
+              <div>
+                <h6 class="fw-bold mb-1">{{comment.name}}</h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">
+                    {{comment.date}}
+                  </p>
+                </div>
+                <p class="mb-0">
+                   {{comment.massage}}
+                </p>
+              </div>
+            </div>
+             <hr class="my-0" />
+            <br>
+            {% endfor %}
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section style="background-color: rgb(5, 73, 50) ">
+  <div class="container my-5 py-5 text-dark" >
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-6">
+        <div class="card">
+          <div class="card-body p-4">
+            <div class="d-flex flex-start w-100">
+              <form method="POST" action="{% url 'comments' %}" >
+              <div class="w-100" >
+                <h5>Add a comment</h5>
+                  {% csrf_token %}
+                <div class="form-outline">
+                  <input name="name" class="form-control" rows="4" placeholder="Your name"></input>
+                  <br>
+                </div>
+                <div class="form-outline">
+                  <textarea name="message" class="form-control" id="textAreaExample" rows="4" placeholder="Your comment"></textarea>
+                  <label class="form-label" for="textAreaExample">What is your view?</label>
+                </div>
+                </div>
+                <br/>
+                <a  class="ctaa" style="width: 150px;">
+  <span  id="send1" type="button"><input style="background-color: transparent; color:#111; " id="1" type="submit" value="Submit"></span>
+  <svg  width="13px" height="10px" viewBox="0 0 13 10">
+    <path d="M1,5 L11,5"></path>
+    <polyline points="8 1 12 5 8 9"></polyline>
+  </svg>
+</a>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--=============== MAIN JS ===============-->
+<script src="{% static 'page/js/main.js'%}"></script>
+
+{% endblock %}

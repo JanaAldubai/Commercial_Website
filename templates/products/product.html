@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load cart_template_tags %}
+
+<div class="mt-5 pt-4">
+    {% if messages %}
+      {% for message in messages %}
+         <div style="background-color:#7ac568ab" class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+             {{ message }}
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      {% endfor %}
+    {% endif %}
+    </div>
+<!--Main layout-->
+<main class="mt-5 pt-4">
+    <div class="container mt-5">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+                <img src="{{ object.image.url }}" class="img-fluid" alt="" />
+            </div>
+            <div class="col-md-6 mb-4">
+                <!--Content-->
+                <div class="p-4">
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge bg-dark me-1">{{object.get_category_display}}</span>
+                        </a>
+                    </div>
+
+                    <p class="lead">
+                        <span>{{object.price}} SAR</span>
+                    </p>
+
+                    <strong><p style="font-size: 20px;">Description</p></strong>
+
+                    <p>{{object.description}}</p>
+
+                    <a style="background-color: rgb(5, 73, 50);" href="{{ object.add_to_cart_url }}" class="btn btn-success" type="submit">
+                        Add to cart
+                        <i class="fas fa-shopping-cart ms-1"></i>
+                    </a>
+                    <a style="background-color: rgb(5, 73, 50);" href="{{ object.remove_from_cart_url }}" class="btn btn-success" type="submit">
+                        Remove from cart
+                        <i class="fas fa-shopping-cart ms-1"></i>
+                    </a>
+                </div>
+                <!--Content-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+        <hr />
+    </div>
+</main>
+<!--Main layout-->
+{% endblock %}

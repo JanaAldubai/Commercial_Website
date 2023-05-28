@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <style>
+        .link{
+            color: aliceblue;
+            padding-top: 50px;
+            font-display: bold;
+            font-size: 30px;
+           
+        }
+        .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+        }
+
+        /* Clear floats after image containers */
+        .row::after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+        #center{
+            cursor: pointer;
+            border: none;
+            outline: none;
+            box-shadow: 20px;
+            
+            background-image: url("{% static 'page/image/back1.jpeg'%}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+    
+        }
+             
+        
+    </style>
+    <meta charset="UTF-8">
+        <title>Home</title>
+        <script src="{% static 'page/js/script.js'%}" type="text/JavaScript"></script>
+
+                <!--=============== CSS ===============-->
+                <link rel="stylesheet" href="{% static 'page/css/style.css'%}">
+
+                  <!--=============== REMIX ICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+</head>
+<body>
+<!--==================== HOME ====================-->
+<section class="home" id="home" style="text-align: center;">
+  <div class="home__container container grid" style="text-align: center;">
+      <center> <img src="{% static 'page/image/FOLK.png'%}" alt="" class="home__img" >  </center>
+
+      <div class="home__data">
+          <h1 class="home__title">
+            <span style="color: rgb(19, 108, 79)">Plants</span> will make your life better
+          </h1>
+          <p  style="text-align: center;">
+              Create incredible plant design for your offices or apastaments. 
+              Add fresness to your new ideas.
+          </p>
+          <P>Delivered to your door and guaranteed for 30 days.</P>
+          <a href="#" class="button button--flex">
+              shop plant  <i class="ri-arrow-right-down-line button__icon"></i>
+          </a>
+      </div>
+  </div>
+</section>
+
+<hr>  <hr>
+
+<center style="background-color: rgb(5, 73, 50);" class="container-fluid" id="center">
+
+<P class="link"> You can vist the link below <br> AND SHARE WITH US YOUR PLANTS </P>
+
+<br><br>
+
+<div class="row">
+    <div class="column">
+      <img src="{% static 'page/image/w9.jpeg'%}" alt="Snow" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="{% static 'page/image/w4.jpeg'%}" alt="Forest" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="{% static 'page/image/w7.jpeg'%}" alt="Mountains" style="width:100%">
+    </div>
+  </div>
+
+    <a class="button" href="{% url 'homeapp'%}" class="button button--flex">
+        CLICK HERE  <i class="ri-arrow-right-down-line button__icon"></i>
+    </a>
+    </center>
+
+    <hr>  <hr>
+
+    <center style="background-color: rgb(5, 73, 50);" class="container-fluid" id="center">
+
+      <P class="link"> HAPPY TO HEAR FROM YOU </P>
+      
+          <a class="button" href="{% url 'comments' %}" class="button button--flex">
+              COMMENTS  <i class="ri-arrow-right-down-line button__icon"></i>
+          </a>
+          </center>
+
+     <!--=============== MAIN JS ===============-->
+     <script src="{% static 'page/js/main.js'%}"></script>
+</body>
+</html>
+
+{% endblock %}

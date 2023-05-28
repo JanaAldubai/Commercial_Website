@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load cart_template_tags %}
+
+ <!--Main layout-->
+<main>
+<div class="container">
+  <br>
+    <div class="table-responsive">
+      <h2>Order Summary</h2><br>
+      <table class="table">
+        <thead>
+           <tr>
+              <th scope="col">#</th>
+              <th scope="col">Item name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total Item Price</th>
+           </tr>
+        </thead>
+        <tbody>
+        {% for order_item in object.items.all %}
+          <tr>
+             <th scope="row">{{ forloop.counter }}</th>
+             <td>{{ order_item.item.name }}</td>
+             <td>{{ order_item.item.price }} SAR</td>
+             <td>
+                 <a href="{% url 'products:remove_single_from_cart' order_item.item.slug %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                 </svg></a>
+                 {{ order_item.quantity }}
+                 <a href="{% url 'products:add_single_to_cart' order_item.item.slug %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                 </svg></a>
+             </td>
+             <td>{{ order_item.get_total_price }} SAR
+                 <a href="{% url 'products:remove_from_cart' order_item.item.slug %}"><svg style="color:green" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill float-end" viewBox="0 0 16 16">
+                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                 </svg></a>
+             </td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5">Your cart is empty</td>
+        </tr>
+        <tr>
+          <td colspan="5">
+          <a href="{% url 'products:products' %}">
+            <button style="background-color: rgb(5, 73, 50);" type="button" class="btn btn-success float-end">Continue Shopping</button>
+          </a>
+          </td>
+        </tr>
+        {% endfor %}
+        {% if object.get_total %}
+        <tr>
+          <td colspan="4"><b>Total Price</b></td>
+          <td><b>{{ object.get_total }} SAR</b></td>
+        </tr>
+        <tr>
+            <td colspan="5">
+              <a href="{% url 'products:thank' %}">
+              <button style="background-color: rgb(5, 73, 50);" type="button" class="btn btn-success float-end ms-2">Order Now</button>
+              </a>
+              <a href="{% url 'products:products' %}">
+              <button style="background-color: rgb(5, 73, 50);" type="button" class="btn btn-success float-end">Continue Shopping</button>
+              </a>
+          </td>
+        </tr>
+        {% endif %}
+        </tbody>
+      </table>
+    </div>
+</div>
+</main>
+ <!--Main layout-->
+
+{% endblock %}

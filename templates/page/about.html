@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <script src="{% static 'page/js/script.js'%}" type="text/JavaScript"></script>
+    
+                <!--=============== CSS ===============-->
+                <link rel="stylesheet" href="{% static 'page/css/style.css'%}">
+
+                  <!--=============== REMIX ICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+             <!--==================== ABOUT ====================-->
+             <section class="about section container" id="about" >
+
+                  
+                    <h2 style="text-align: center;" class="section__title about__title">
+                        Who we really are & <br> why choose us 🌱
+                    </h2>
+                    
+                        <p style="text-align: center;">
+                            We offer high-quality plants at reasonable prices with the most professional arrangement 
+                            trust our plant process and delivery service every time
+                        </p>
+                        <center>  
+                        <a href="{% url 'contact'%}" class="button button--flex"">
+                            Contact Us Now  <i class="ri-arrow-right-down-line button__icon"></i>
+                        </a>
+                    </center>
+     <!--=============== MAIN JS ===============-->
+     <script src="{% static 'page/js/main.js'%}"></script>
+</body>
+</html>
+
+{% endblock %}
+
